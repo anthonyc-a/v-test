@@ -12,7 +12,7 @@ const Nav = ({ navActive }: any) => {
           <li className="p-1">
             <Link href="/">Advertises</Link>
           </li>
-          <li>
+          <li className="p-1">
             <Link href="/">Partners</Link>
           </li>
         </ul>

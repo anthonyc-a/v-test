@@ -1,7 +1,7 @@
 const ButtonLg = ({ buttonType }: any) => {
   if (buttonType === "play")
     return (
-      <button className="w-14 h-14 md:w-auto md:px-10 bg-green-500 text-xl mr-3 flex justify-center items-center">
+      <button className="w-14 h-14 md:w-auto md:px-10 bg-green-500 text-white text-xl mr-3 flex justify-center items-center">
         <svg
         className="md:mr-2"
           stroke="currentColor"
@@ -15,7 +15,7 @@ const ButtonLg = ({ buttonType }: any) => {
           <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"></path>
           <path d="M6.271 5.055a.5.5 0 0 1 .52.038l3.5 2.5a.5.5 0 0 1 0 .814l-3.5 2.5A.5.5 0 0 1 6 10.5v-5a.5.5 0 0 1 .271-.445z"></path>
         </svg>
-        <span className="pb-1 hidden md:block">Play video</span>
+        <span className="hidden md:block">Play video</span>
       </button>
     );
 

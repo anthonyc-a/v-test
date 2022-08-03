@@ -25,8 +25,9 @@ const Header = () => {
               <Logo />
               <Navbar />
             </div>
+            <Searchbar />
+
             <div className="header-r flex items-center">
-              <Searchbar />
               <SearchButton
                 setSearchActive={setSearchActive}
                 searchActive={searchActive}
