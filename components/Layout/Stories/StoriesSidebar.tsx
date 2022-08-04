@@ -16,7 +16,12 @@ const StoriesSidebar = () => {
       <Link href="/">
         <strong className="text-3xl">Lgo</strong>
       </Link>
-      <div className="stories-contain mt-8"><div className="mb-2">...</div>{getStories()} <div className="mb-2">...</div>{getStories()} <div className="mb-2">...</div>{getStories()}</div>
+      <div className="stories-contain mt-8">
+        <div className="mb-2">...</div>
+        {getStories()} <div className="mb-2">...</div>
+        {getStories()} <div className="mb-2">...</div>
+        {getStories()}
+      </div>
     </div>
   );
 };

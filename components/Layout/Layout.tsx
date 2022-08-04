@@ -9,7 +9,6 @@ const Layout = ({ children }: any) => {
       <StoriesSidebar />
       <div className="md:w-[calc(100%-62px)]">
         <Header />
-        <Stories />
         <main>{children}</main>
         <Footer />
       </div>

@@ -5,10 +5,12 @@ import Categories from "../components/Home/LiveNow/Categories/Categories";
 import LiveNow from "../components/Home/LiveNow/LiveNow";
 import Recommended from "../components/Home/Recommended/Recommended";
 import Layout from "../components/Layout/Layout";
+import Stories from "../components/Layout/Stories/Stories";
 
 const index = () => {
   return (
     <Layout>
+      <Stories/>
       <ContainerSm>
         <HeroCarousel />
         <LiveNow />

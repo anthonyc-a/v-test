@@ -1,9 +1,22 @@
+import { useRouter } from "next/router";
+
 const ButtonLg = ({ buttonType }: any) => {
+  const router = useRouter();
+
+  const handleClick = () => {
+    router.push("/player");
+  };
+
   if (buttonType === "play")
     return (
-      <button className="w-14 h-14 md:w-auto md:px-10 bg-green-500 text-white text-xl mr-3 flex justify-center items-center">
+      <button
+        onClick={() => {
+          handleClick();
+        }}
+        className="w-14 h-14 md:w-auto md:px-10 bg-green-500 text-white text-xl mr-3 flex justify-center items-center"
+      >
         <svg
-        className="md:mr-2"
+          className="md:mr-2"
           stroke="currentColor"
           fill="currentColor"
           strokeWidth="0"
