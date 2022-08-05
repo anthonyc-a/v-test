@@ -1,27 +1,67 @@
-import React from "react";
+// Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
+// SPDX-License-Identifier: MIT-0
 
-const Stream = () => {
+import React, { useEffect } from "react";
+
+
+declare global {
+  interface Window {
+      IVSPlayer:any;
+  }
+}
+// Styles
+
+const VideoPlayer = ({ playbackUrl }:any) => {
+  useEffect(() => {
+    const MediaPlayerPackage = window.IVSPlayer;
+
+    // First, check if the browser supports the Amazon IVS player.
+    if (!MediaPlayerPackage.isPlayerSupported) {
+      console.warn(
+        "The current browser does not support the Amazon IVS player."
+      );
+      return;
+    }
+
+    const PlayerState = MediaPlayerPackage.PlayerState;
+    const PlayerEventType = MediaPlayerPackage.PlayerEventType;
+
+    // Initialize player
+    const player = MediaPlayerPackage.create();
+    player.attachHTMLVideoElement(document.getElementById("video-player"));
+
+    // Attach event listeners
+    player.addEventListener(PlayerState.PLAYING, () => {
+      console.info("Player State - PLAYING");
+    });
+    player.addEventListener(PlayerState.ENDED, () => {
+      console.info("Player State - ENDED");
+    });
+    player.addEventListener(PlayerState.READY, () => {
+      console.info("Player State - READY");
+    });
+    player.addEventListener(PlayerEventType.ERROR, (err:any) => {
+      console.warn("Player Event - ERROR:", err);
+    });
+
+    // Setup stream and play
+    player.setAutoplay(true);
+    player.load(playbackUrl);
+    player.setVolume(0.5);
+  }, []); // eslint-disable-line
+
   return (
-    <div className="relative flex justify-center items-center w-full bg-red-300 text-white">
-      <svg
-      className="absolute"
-        stroke="currentColor"
-        fill="currentColor"
-        strokeWidth="0"
-        viewBox="0 0 512 512"
-        height="2.5em"
-        width="2.5em"
-        xmlns="http://www.w3.org/2000/svg"
-      >
-        <path d="M133 440a35.37 35.37 0 01-17.5-4.67c-12-6.8-19.46-20-19.46-34.33V111c0-14.37 7.46-27.53 19.46-34.33a35.13 35.13 0 0135.77.45l247.85 148.36a36 36 0 010 61l-247.89 148.4A35.5 35.5 0 01133 440z"></path>
-      </svg>
-      <img
-        className="object-cover w-full h-60"
-        src="https://www.tiltreport.com/media/__sizes__/Riot_Games_Discusses_Possibility_Of_Battle_Royale_In_League_Of_Legends-crop-c0-5__0-5-975x650-70.jpg"
-        alt=""
-      />
+    <div className="player-wrapper">
+      <div className="aspect-169 pos-relative full-width full-height">
+        <video
+          id="video-player"
+          className="video-elem pos-absolute full-width"
+          playsInline
+          muted
+        ></video>
+      </div>
     </div>
   );
 };
 
-export default Stream;
+export default VideoPlayer;
