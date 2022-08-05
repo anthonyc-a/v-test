@@ -8,7 +8,7 @@ const Layout = ({ children }: any) => {
   return (
     <div className="md:flex">
       <Head>
-        <script src="https://player.live-video.net/1.8.0/amazon-ivs-player.min.js"></script>
+        <script async src="https://player.live-video.net/1.8.0/amazon-ivs-player.min.js"></script>
       </Head>
       <StoriesSidebar />
       <div className="md:w-[calc(100%-62px)]">
